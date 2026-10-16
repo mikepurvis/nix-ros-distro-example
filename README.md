@@ -2,11 +2,13 @@
 
 A repo that keeps its own generated ROS package expressions and builds them
 with [nix-ros-overlay][overlay]'s machinery, without forking it. It pairs with
-branch [`mkrosdistro-AN2ATG0`][branch] of the overlay; see
+[lopsided98/nix-ros-overlay#951][pr] (branch
+[`mkrosdistro-develop-AN2ATG0`][branch], on upstream develop); see
 `docs/external-distros.md` there for the user-facing API.
 
 [overlay]: https://github.com/lopsided98/nix-ros-overlay
-[branch]: https://github.com/mikepurvis/nix-ros-overlay/tree/mkrosdistro-AN2ATG0
+[pr]: https://github.com/lopsided98/nix-ros-overlay/pull/951
+[branch]: https://github.com/mikepurvis/nix-ros-overlay/tree/mkrosdistro-develop-AN2ATG0
 
 ## What's here
 
@@ -39,7 +41,7 @@ nix build .#banana.angles
 
 `rosdistro/` is a private rosdistro index with one distro, mango.
 `rosdistro/mango/distribution.yaml` is rolling's distribution file at the
-rosdistro commit the overlay pins (2026-09-18). `update-mango` is
+rosdistro commit the overlay pins (2026-10-02). `update-mango` is
 `update-overlay` pointed at a copy of the pinned rosdistro tree with that
 index laid over it, so rosdep comes along unchanged.
 
@@ -63,19 +65,25 @@ nix build .#mango-ros-base
 
 Nothing in mango is in any binary cache, so that builds the whole core.
 
+Two packages, `mimick-vendor` and `zenoh-cpp-vendor`, fetch sources at build
+time through `ament_vendor`. The overlay's fixups replace those fetches with
+pinned sources listed in a `vendored-source.json` beside each expression, so
+mango carries its own copies. Both are rolling's from the overlay, since the
+versions match.
+
 To move mango to a newer snapshot, copy a newer `rolling/distribution.yaml`
 over `rosdistro/mango/distribution.yaml` and rerun `update-mango`. Its cache is
 keyed on the file contents. Versions that run ahead of the overlay's rolling
 fixups may need overrides of their own.
 
-## What is coupled today (upstream develop / dev-out)
+## What is coupled today
 
 1. `distros/distro-overlay.nix` imports `./${distro}/generated.nix` and
    `./${distro}/overrides.nix` by relative path. `distro` is the only input.
-2. `distro` is used for six things at once: those two paths, the
+2. `distro` is used for five things at once: those two paths, the
    `rosPackages.${distro}` attribute that splicing looks up for
-   cross-compilation, `ROS_DISTRO` passed to `buildRosPackage`, the Qt 5/6
-   choice, and the jazzy-only dev-output split. A distro named anything other
+   cross-compilation, `ROS_DISTRO` passed to `buildRosPackage`, and the Qt 5/6
+   choice. A distro named anything other
    than an upstream one gets none of the fixups, and a second copy of jazzy
    under another name splices against the wrong set.
 3. `rosPackages.mkRosDistroOverlay` exists but takes `{ version, distro }`
@@ -113,10 +121,7 @@ fixups may need overrides of their own.
   directly.
 - All bundled distros evaluate to the same drvPaths as before (checked on
   jazzy, humble, kilted, lyrical and rolling, including `desktop`).
-- [`mkrosdistro-develop-AN2ATG0`][develop] carries the same change on
-  upstream develop, independent of dev-out.
 
-[develop]: https://github.com/mikepurvis/nix-ros-overlay/tree/mkrosdistro-develop-AN2ATG0
 
 ## Design notes and open questions
 
@@ -132,6 +137,16 @@ fixups may need overrides of their own.
   similar fixes. The bundled jazzy carries one such fixup of its own,
   `gazebo-ros`, which only exists in ROS 1. That is the class of problem in
   #812.
+- `vendored-source.json` lives beside the generated expression, which suits
+  an external repo, but `updateAmentVendor` writes it back to
+  `dirOf meta.position`, a read-only store path when the expression comes
+  from a flake. Writing to the working directory instead would let consumers
+  generate their own.
+- `update-overlay` builds a package.xml cache for every distro in its index,
+  so one broken entry stops all generation. At the rosdistro commit `develop`
+  pins, humble lists `affordance_primitives`, whose release repository no
+  longer exists. Here each update app gets an index of only the distro it
+  needs.
 - superflore needs no changes: it already writes to any git repo and reads
   any rosdistro index, and `generated` accepts the directory that `--only`
   leaves behind. `update-overlay` is only reachable through the flake. A
