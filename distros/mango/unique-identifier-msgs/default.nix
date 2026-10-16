@@ -1,0 +1,27 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake, ament-lint-auto, ament-lint-common, rosidl-core-generators, rosidl-core-runtime }:
+buildRosPackage {
+  pname = "ros-mango-unique-identifier-msgs";
+  version = "2.9.0-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/unique_identifier_msgs-release/archive/release/rolling/unique_identifier_msgs/2.9.0-1.tar.gz";
+    name = "2.9.0-1.tar.gz";
+    sha256 = "030553e9e83c7dec959394c0e4a647a542dd9b445799de47da81154bea35a79c";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake rosidl-core-generators ];
+  checkInputs = [ ament-lint-auto ament-lint-common ];
+  nativeBuildInputs = [ ament-cmake rosidl-core-generators ];
+  rosBuildExportDepends = [ rosidl-core-runtime ];
+  rosExecDepends = [ rosidl-core-runtime ];
+
+  meta = {
+    description = "ROS messages for universally unique identifiers.";
+    license = with lib.licenses; [ bsdOriginal ];
+  };
+}

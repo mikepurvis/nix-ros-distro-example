@@ -1,0 +1,25 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake-core, ament-cmake-libraries }:
+buildRosPackage {
+  pname = "ros-mango-ament-cmake-export-dependencies";
+  version = "2.9.2-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/ament_cmake-release/archive/release/rolling/ament_cmake_export_dependencies/2.9.2-1.tar.gz";
+    name = "2.9.2-1.tar.gz";
+    sha256 = "40c2a886894591206c54fe6911312e89b3d7a95f9ac59ca708e0bbaea6b23e1f";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake-core ];
+  nativeBuildInputs = [ ament-cmake-core ];
+  rosBuildExportDepends = [ ament-cmake-core ament-cmake-libraries ];
+
+  meta = {
+    description = "The ability to export dependencies to downstream packages in the ament buildsystem in CMake.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

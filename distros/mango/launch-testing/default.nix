@@ -1,0 +1,25 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-copyright, ament-flake8, ament-index-python, ament-pep257, ament-xmllint, launch, launch-xml, launch-yaml, python3Packages }:
+buildRosPackage {
+  pname = "ros-mango-launch-testing";
+  version = "3.10.1-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/launch-release/archive/release/rolling/launch_testing/3.10.1-1.tar.gz";
+    name = "3.10.1-1.tar.gz";
+    sha256 = "c3f2d157a402cd259b160fdab6133dad13ea266c6b0d906efee4359d5520b7d7";
+  };
+
+  buildType = "ament_python";
+  checkInputs = [ ament-copyright ament-flake8 ament-pep257 ament-xmllint ];
+  propagatedBuildInputs = [ python3Packages.osrf-pycommon python3Packages.pytest ];
+  rosExecDepends = [ ament-index-python launch launch-xml launch-yaml ];
+
+  meta = {
+    description = "A package to create tests which involve launch files and multiple processes.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

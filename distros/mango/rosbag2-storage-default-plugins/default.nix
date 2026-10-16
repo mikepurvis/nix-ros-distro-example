@@ -1,0 +1,25 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake, rosbag2-storage-mcap, rosbag2-storage-sqlite3 }:
+buildRosPackage {
+  pname = "ros-mango-rosbag2-storage-default-plugins";
+  version = "0.35.0-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/rolling/rosbag2_storage_default_plugins/0.35.0-1.tar.gz";
+    name = "0.35.0-1.tar.gz";
+    sha256 = "83a27f1898fc1eb1c34232e21308cc413efcee365d369be30b38be588bc9da43";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake ];
+  nativeBuildInputs = [ ament-cmake ];
+  rosExecDepends = [ rosbag2-storage-mcap rosbag2-storage-sqlite3 ];
+
+  meta = {
+    description = "Intermediate metapackage to point at default storage plugin(s) for rosbag2";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

@@ -1,0 +1,26 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake-core, ament-cmake-lint-cmake, ament-cmake-test, ament-copyright }:
+buildRosPackage {
+  pname = "ros-mango-ament-cmake-copyright";
+  version = "0.21.2-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/rolling/ament_cmake_copyright/0.21.2-1.tar.gz";
+    name = "0.21.2-1.tar.gz";
+    sha256 = "fb8d8730483c05724a0eaefb62e1eb1d03a1d3240afd503e14d2aef64626894d";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake-core ament-cmake-test ament-copyright ];
+  checkInputs = [ ament-cmake-lint-cmake ];
+  nativeBuildInputs = [ ament-cmake-core ament-cmake-test ament-copyright ];
+  rosBuildExportDepends = [ ament-cmake-test ament-copyright ];
+
+  meta = {
+    description = "The CMake API for ament_copyright to check every source file contains copyright reference.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

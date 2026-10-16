@@ -1,0 +1,28 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake-core, ament-cmake-gtest, ament-cmake-pytest, ament-cmake-ros-core, ament-index-python, ament-lint-auto, ament-lint-common, performance-test-fixture, python3, rcpputils, rcutils, rosidl-cli, rosidl-generator-c, rosidl-generator-type-description, rosidl-pycommon, rosidl-runtime-c, rosidl-runtime-cpp, rosidl-typesupport-c, rosidl-typesupport-interface, rosidl-typesupport-introspection-cpp }:
+buildRosPackage {
+  pname = "ros-mango-rosidl-typesupport-cpp";
+  version = "3.5.0-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/rosidl_typesupport-release/archive/release/rolling/rosidl_typesupport_cpp/3.5.0-1.tar.gz";
+    name = "3.5.0-1.tar.gz";
+    sha256 = "5b2ba0bb1064184d0cda95853a98684d697fdc339fc451677fccabb7107ced3b";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake-ros-core rcpputils rcutils rosidl-runtime-c rosidl-typesupport-c rosidl-typesupport-introspection-cpp ];
+  checkInputs = [ ament-cmake-gtest ament-cmake-pytest ament-lint-auto ament-lint-common performance-test-fixture ];
+  propagatedBuildInputs = [ python3 ];
+  nativeBuildInputs = [ ament-cmake-ros-core python3 ];
+  rosBuildExportDepends = [ ament-cmake-core rcpputils rcutils rosidl-runtime-c rosidl-runtime-cpp rosidl-typesupport-c ];
+  rosExecDepends = [ ament-index-python rcpputils rcutils rosidl-cli rosidl-generator-c rosidl-generator-type-description rosidl-pycommon rosidl-typesupport-interface ];
+
+  meta = {
+    description = "Generate the type support for C++ messages.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

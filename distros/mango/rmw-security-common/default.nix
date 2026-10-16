@@ -1,0 +1,27 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake, ament-cmake-gmock, ament-cmake-ros-core, ament-lint-auto, ament-lint-common, rcutils, rmw }:
+buildRosPackage {
+  pname = "ros-mango-rmw-security-common";
+  version = "7.11.2-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/rmw-release/archive/release/rolling/rmw_security_common/7.11.2-1.tar.gz";
+    name = "7.11.2-1.tar.gz";
+    sha256 = "50abd9082ce8377ad222e40351d13c93209c915aab8570f45eac9fcb586ed99a";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake ament-cmake-ros-core rcutils rmw ];
+  checkInputs = [ ament-cmake-gmock ament-lint-auto ament-lint-common ];
+  nativeBuildInputs = [ ament-cmake ament-cmake-ros-core ];
+  rosBuildExportDepends = [ rcutils rmw ];
+  rosExecDepends = [ rcutils rmw ];
+
+  meta = {
+    description = "Define a common rmw secutiry utils";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

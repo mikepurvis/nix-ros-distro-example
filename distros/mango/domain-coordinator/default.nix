@@ -1,0 +1,23 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-copyright, ament-flake8, ament-pep257, ament-xmllint, python3Packages }:
+buildRosPackage {
+  pname = "ros-mango-domain-coordinator";
+  version = "0.16.0-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/ament_cmake_ros-release/archive/release/rolling/domain_coordinator/0.16.0-1.tar.gz";
+    name = "0.16.0-1.tar.gz";
+    sha256 = "aef14a5987cbd91d12ec044254a613aea85f1452c3d3fc73fe3f8e0bcdefb782";
+  };
+
+  buildType = "ament_python";
+  checkInputs = [ ament-copyright ament-flake8 ament-pep257 ament-xmllint python3Packages.pytest ];
+
+  meta = {
+    description = "A tool to coordinate unique ROS_DOMAIN_IDs across multiple processes";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

@@ -1,0 +1,27 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake, ament-lint-common, builtin-interfaces, geometry-msgs, rosidl-default-generators, rosidl-default-runtime, std-msgs }:
+buildRosPackage {
+  pname = "ros-mango-diagnostic-msgs";
+  version = "5.10.2-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/rolling/diagnostic_msgs/5.10.2-1.tar.gz";
+    name = "5.10.2-1.tar.gz";
+    sha256 = "82c9ecdad38a02521d0debbdd1457c1f231ee2f1201051efca1a5d80a7303196";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake builtin-interfaces geometry-msgs rosidl-default-generators std-msgs ];
+  checkInputs = [ ament-lint-common ];
+  nativeBuildInputs = [ ament-cmake rosidl-default-generators ];
+  rosBuildExportDepends = [ builtin-interfaces geometry-msgs std-msgs ];
+  rosExecDepends = [ builtin-interfaces geometry-msgs rosidl-default-runtime std-msgs ];
+
+  meta = {
+    description = "A package containing some diagnostics related message and service definitions.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

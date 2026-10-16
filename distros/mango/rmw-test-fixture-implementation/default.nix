@@ -1,0 +1,27 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake, ament-cmake-gtest, ament-cmake-pytest, ament-cmake-ros-core, ament-lint-auto, ament-lint-common, python3, rcpputils, rcutils, rmw, rmw-implementation, rmw-implementation-cmake, rmw-test-fixture, rpyutils }:
+buildRosPackage {
+  pname = "ros-mango-rmw-test-fixture-implementation";
+  version = "0.16.0-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/ament_cmake_ros-release/archive/release/rolling/rmw_test_fixture_implementation/0.16.0-1.tar.gz";
+    name = "0.16.0-1.tar.gz";
+    sha256 = "708d972685193be65732934353d8b4153dfe2db85c1ca0fb7579648c5122e5c9";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake ament-cmake-ros-core python3 rcpputils rcutils rmw rmw-implementation rmw-implementation-cmake rmw-test-fixture ];
+  checkInputs = [ ament-cmake-gtest ament-cmake-pytest ament-lint-auto ament-lint-common ];
+  nativeBuildInputs = [ ament-cmake ament-cmake-ros-core ];
+  rosBuildExportDepends = [ rcpputils rcutils rmw rmw-test-fixture ];
+  rosExecDepends = [ rcpputils rcutils rmw rmw-test-fixture rpyutils ];
+
+  meta = {
+    description = "Tools for isolating ROS environments at the RMW layer";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

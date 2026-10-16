@@ -1,0 +1,28 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake-ros, ament-lint-auto, ament-lint-common, performance-test-fixture, rcl-logging-interface, rcpputils, rcutils, spdlog, spdlog-vendor }:
+buildRosPackage {
+  pname = "ros-mango-rcl-logging-spdlog";
+  version = "3.5.0-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/rcl_logging-release/archive/release/rolling/rcl_logging_spdlog/3.5.0-1.tar.gz";
+    name = "3.5.0-1.tar.gz";
+    sha256 = "8fe6d2cd60c2739dd03a82073b46617418d65d6d6f85ac8a905ec2f951c69bab";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake-ros rcl-logging-interface rcpputils rcutils spdlog-vendor ];
+  checkInputs = [ ament-lint-auto ament-lint-common performance-test-fixture ];
+  propagatedBuildInputs = [ spdlog ];
+  nativeBuildInputs = [ ament-cmake-ros ];
+  rosBuildExportDepends = [ rcl-logging-interface rcpputils rcutils spdlog-vendor ];
+  rosExecDepends = [ rcl-logging-interface rcpputils rcutils spdlog-vendor ];
+
+  meta = {
+    description = "Implementation of rcl_logging API for an spdlog backend.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

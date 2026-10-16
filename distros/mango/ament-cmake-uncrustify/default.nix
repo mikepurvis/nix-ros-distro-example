@@ -1,0 +1,27 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake-copyright, ament-cmake-core, ament-cmake-lint-cmake, ament-cmake-test, ament-uncrustify }:
+buildRosPackage {
+  pname = "ros-mango-ament-cmake-uncrustify";
+  version = "0.21.2-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/rolling/ament_cmake_uncrustify/0.21.2-1.tar.gz";
+    name = "0.21.2-1.tar.gz";
+    sha256 = "aad18905f195b00258d791917f8c0bd82a5ffd8ca0a031459b11150933d97cc7";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake-core ament-cmake-test ];
+  checkInputs = [ ament-cmake-copyright ament-cmake-lint-cmake ];
+  nativeBuildInputs = [ ament-cmake-core ament-cmake-test ];
+  rosBuildExportDepends = [ ament-cmake-test ament-uncrustify ];
+
+  meta = {
+    description = "The CMake API for ament_uncrustify to check code against styleconventions
+    using uncrustify.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

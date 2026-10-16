@@ -1,0 +1,27 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake, ament-cmake-gtest, ament-cmake-ros-core, ament-lint-auto, ament-lint-common, performance-test-fixture, rcutils, rosidl-buffer, rosidl-typesupport-interface }:
+buildRosPackage {
+  pname = "ros-mango-rosidl-runtime-c";
+  version = "5.3.1-r2";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/rosidl-release/archive/release/rolling/rosidl_runtime_c/5.3.1-2.tar.gz";
+    name = "5.3.1-2.tar.gz";
+    sha256 = "a2f9955b48386b9cfff862da9e28cd6a8b68aa35b68afa6ed882c9f907a53f60";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake ament-cmake-ros-core rcutils rosidl-buffer rosidl-typesupport-interface ];
+  checkInputs = [ ament-cmake-gtest ament-lint-auto ament-lint-common performance-test-fixture ];
+  nativeBuildInputs = [ ament-cmake ament-cmake-ros-core ];
+  rosBuildExportDepends = [ ament-cmake rcutils rosidl-buffer rosidl-typesupport-interface ];
+  rosExecDepends = [ rcutils rosidl-buffer ];
+
+  meta = {
+    description = "Provides definitions, initialization and finalization functions, and macros for getting and working with rosidl typesupport types in C.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

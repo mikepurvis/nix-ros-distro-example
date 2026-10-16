@@ -1,0 +1,27 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake-copyright, ament-cmake-core, ament-cmake-lint-cmake, ament-cmake-test, ament-pep257 }:
+buildRosPackage {
+  pname = "ros-mango-ament-cmake-pep257";
+  version = "0.21.2-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/rolling/ament_cmake_pep257/0.21.2-1.tar.gz";
+    name = "0.21.2-1.tar.gz";
+    sha256 = "cedd33ec992684775bb9c940a17ac6bcba6c5fce72bbe9bfea1cae68f826c63d";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake-core ament-cmake-test ];
+  checkInputs = [ ament-cmake-copyright ament-cmake-lint-cmake ];
+  nativeBuildInputs = [ ament-cmake-core ament-cmake-test ];
+  rosBuildExportDepends = [ ament-cmake-test ament-pep257 ];
+
+  meta = {
+    description = "The CMake API for ament_pep257 to check code against the docstring style conventions in
+    PEP 257.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

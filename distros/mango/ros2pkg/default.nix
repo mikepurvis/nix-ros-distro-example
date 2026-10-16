@@ -1,0 +1,25 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-copyright, ament-flake8, ament-index-python, ament-pep257, ament-xmllint, launch, launch-testing, launch-testing-ros, python3Packages, ros2cli }:
+buildRosPackage {
+  pname = "ros-mango-ros2pkg";
+  version = "0.42.0-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/ros2cli-release/archive/release/rolling/ros2pkg/0.42.0-1.tar.gz";
+    name = "0.42.0-1.tar.gz";
+    sha256 = "cd0c8d25328ee975282537ed4ddcbb11bdb168ff3534f2a57290c9b11d5b3967";
+  };
+
+  buildType = "ament_python";
+  checkInputs = [ ament-flake8 ament-pep257 ament-xmllint launch launch-testing launch-testing-ros python3Packages.pytest python3Packages.pytest-timeout ];
+  propagatedBuildInputs = [ python3Packages.catkin-pkg python3Packages.empy ];
+  rosExecDepends = [ ament-copyright ament-index-python ros2cli ];
+
+  meta = {
+    description = "The pkg command for ROS 2 command line tools.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

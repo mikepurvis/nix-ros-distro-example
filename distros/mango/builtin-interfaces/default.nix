@@ -1,0 +1,27 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake, ament-lint-common, rosidl-core-generators, rosidl-core-runtime }:
+buildRosPackage {
+  pname = "ros-mango-builtin-interfaces";
+  version = "2.5.1-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/rolling/builtin_interfaces/2.5.1-1.tar.gz";
+    name = "2.5.1-1.tar.gz";
+    sha256 = "ae6510875d7495f9b9c72364caada45a29a19013d284c51481b8fe164c6d8218";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake rosidl-core-generators ];
+  checkInputs = [ ament-lint-common ];
+  nativeBuildInputs = [ ament-cmake rosidl-core-generators ];
+  rosBuildExportDepends = [ rosidl-core-runtime ];
+  rosExecDepends = [ rosidl-core-runtime ];
+
+  meta = {
+    description = "A package containing message and service definitions for types defined in the OMG IDL Platform Specific Model.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

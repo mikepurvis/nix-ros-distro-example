@@ -1,0 +1,27 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake, ament-lint-common, builtin-interfaces, geometry-msgs, rosidl-default-generators, rosidl-default-runtime }:
+buildRosPackage {
+  pname = "ros-mango-tf2-msgs";
+  version = "0.46.4-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/rolling/tf2_msgs/0.46.4-1.tar.gz";
+    name = "0.46.4-1.tar.gz";
+    sha256 = "f9a8bb55f68e59581af7e3671867dd53c432762f0fbe62bf5028be40f670acba";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake builtin-interfaces geometry-msgs rosidl-default-generators ];
+  checkInputs = [ ament-lint-common ];
+  nativeBuildInputs = [ ament-cmake rosidl-default-generators ];
+  rosBuildExportDepends = [ builtin-interfaces geometry-msgs ];
+  rosExecDepends = [ builtin-interfaces geometry-msgs rosidl-default-runtime ];
+
+  meta = {
+    description = "tf2_msgs";
+    license = with lib.licenses; [ bsdOriginal ];
+  };
+}

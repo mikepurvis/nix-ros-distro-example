@@ -1,0 +1,27 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake, ament-lint-common, rosidl-default-generators, rosidl-default-runtime, sensor-msgs, std-msgs }:
+buildRosPackage {
+  pname = "ros-mango-stereo-msgs";
+  version = "5.10.2-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/rolling/stereo_msgs/5.10.2-1.tar.gz";
+    name = "5.10.2-1.tar.gz";
+    sha256 = "9d1fabfaa0bfbeb2d3c7464f63d262d151dd8f19c8f6e35661b492e795e02d71";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake rosidl-default-generators sensor-msgs std-msgs ];
+  checkInputs = [ ament-lint-common ];
+  nativeBuildInputs = [ ament-cmake rosidl-default-generators ];
+  rosBuildExportDepends = [ sensor-msgs std-msgs ];
+  rosExecDepends = [ rosidl-default-runtime sensor-msgs std-msgs ];
+
+  meta = {
+    description = "A package containing some stereo camera related message definitions.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

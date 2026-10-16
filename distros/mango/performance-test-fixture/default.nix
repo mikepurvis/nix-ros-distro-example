@@ -1,0 +1,27 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake-core, ament-cmake-export-dependencies, ament-cmake-export-targets, ament-cmake-google-benchmark, ament-cmake-ros-core, ament-cmake-test, ament-lint-auto, ament-lint-common, google-benchmark-vendor, osrf-testing-tools-cpp }:
+buildRosPackage {
+  pname = "ros-mango-performance-test-fixture";
+  version = "0.5.1-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/performance_test_fixture-release/archive/release/rolling/performance_test_fixture/0.5.1-1.tar.gz";
+    name = "0.5.1-1.tar.gz";
+    sha256 = "e9f6bbb1c65e2c31aadaed645e9e828595a63d7aaac5327741332ddc0b2c919f";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake-core ament-cmake-export-dependencies ament-cmake-export-targets ament-cmake-ros-core ament-cmake-test google-benchmark-vendor osrf-testing-tools-cpp ];
+  checkInputs = [ ament-cmake-google-benchmark ament-lint-auto ament-lint-common ];
+  nativeBuildInputs = [ ament-cmake-core ament-cmake-export-dependencies ament-cmake-export-targets ament-cmake-ros-core ament-cmake-test ];
+  rosBuildExportDepends = [ ament-cmake-google-benchmark google-benchmark-vendor osrf-testing-tools-cpp ];
+  rosExecDepends = [ google-benchmark-vendor osrf-testing-tools-cpp ];
+
+  meta = {
+    description = "Test fixture and CMake macro for using osrf_testing_tools_cpp with Google Benchmark";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

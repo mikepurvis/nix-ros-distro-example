@@ -1,0 +1,28 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake-core, ament-cmake-pytest, ament-cmake-python, ament-cmake-ros-core, ament-index-python, ament-lint-auto, ament-lint-common, python3, rosidl-cli, rosidl-parser }:
+buildRosPackage {
+  pname = "ros-mango-rosidl-generator-type-description";
+  version = "5.3.1-r2";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/rosidl-release/archive/release/rolling/rosidl_generator_type_description/5.3.1-2.tar.gz";
+    name = "5.3.1-2.tar.gz";
+    sha256 = "70ceec2173383198deee7ab2085ceaf0f741b73f3a4f6293d8ebbd5c7115ba0c";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake-python ament-cmake-ros-core ];
+  checkInputs = [ ament-cmake-pytest ament-lint-auto ament-lint-common ];
+  propagatedBuildInputs = [ python3 ];
+  nativeBuildInputs = [ ament-cmake-python ament-cmake-ros-core python3 ];
+  rosBuildExportDepends = [ ament-cmake-core ];
+  rosExecDepends = [ ament-index-python rosidl-cli rosidl-parser ];
+
+  meta = {
+    description = "Generate hashes and descriptions of ROS 2 interface types, per REP-2011.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

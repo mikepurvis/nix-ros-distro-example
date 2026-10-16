@@ -1,0 +1,27 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake, ament-lint-auto, ament-lint-common, builtin-interfaces, rosidl-default-generators, rosidl-default-runtime }:
+buildRosPackage {
+  pname = "ros-mango-rosbag2-interfaces";
+  version = "0.35.0-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/rolling/rosbag2_interfaces/0.35.0-1.tar.gz";
+    name = "0.35.0-1.tar.gz";
+    sha256 = "63c8fd14cd7b3514421af2c52dd4726d01651aa7139f640de15ef204f90c888a";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake builtin-interfaces rosidl-default-generators ];
+  checkInputs = [ ament-lint-auto ament-lint-common ];
+  nativeBuildInputs = [ ament-cmake rosidl-default-generators ];
+  rosBuildExportDepends = [ builtin-interfaces ];
+  rosExecDepends = [ builtin-interfaces rosidl-default-runtime ];
+
+  meta = {
+    description = "Interface definitions for controlling rosbag2";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

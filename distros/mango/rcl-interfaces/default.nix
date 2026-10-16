@@ -1,0 +1,29 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake, ament-lint-auto, ament-lint-common, builtin-interfaces, rosidl-default-generators, rosidl-default-runtime }:
+buildRosPackage {
+  pname = "ros-mango-rcl-interfaces";
+  version = "2.5.1-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/rolling/rcl_interfaces/2.5.1-1.tar.gz";
+    name = "2.5.1-1.tar.gz";
+    sha256 = "b59f295df0ea27fd52468fa9454ea6e9f1a79bb2b8c177eed8b16f8894b8fc7b";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake builtin-interfaces rosidl-default-generators ];
+  checkInputs = [ ament-lint-auto ament-lint-common ];
+  nativeBuildInputs = [ ament-cmake rosidl-default-generators ];
+  rosBuildExportDepends = [ builtin-interfaces ];
+  rosExecDepends = [ builtin-interfaces rosidl-default-runtime ];
+
+  meta = {
+    description = "The ROS client library common interfaces.
+    This package contains the messages and services which ROS client libraries will use under the hood to
+    communicate higher level concepts such as parameters.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

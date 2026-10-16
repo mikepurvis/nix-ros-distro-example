@@ -1,0 +1,28 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake, ament-cmake-gtest, ament-cmake-pytest, ament-cmake-python, ament-cmake-ros-core, ament-index-python, ament-lint-auto, ament-lint-common, fastcdr, osrf-testing-tools-cpp, performance-test-fixture, python3, rcutils, rmw, rosidl-buffer-backend, rosidl-cli, rosidl-generator-c, rosidl-generator-cpp, rosidl-pycommon, rosidl-runtime-c, rosidl-runtime-cpp, rosidl-typesupport-interface }:
+buildRosPackage {
+  pname = "ros-mango-rosidl-typesupport-fastrtps-cpp";
+  version = "3.10.1-r2";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/rosidl_typesupport_fastrtps-release/archive/release/rolling/rosidl_typesupport_fastrtps_cpp/3.10.1-2.tar.gz";
+    name = "3.10.1-2.tar.gz";
+    sha256 = "3bea913362c1ca9cb41f11124d339b9ec80cd288a45f1b2ae8e8eb7aa57f2b2f";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake ament-cmake-python ament-cmake-ros-core fastcdr rmw rosidl-buffer-backend rosidl-runtime-c rosidl-runtime-cpp ];
+  checkInputs = [ ament-cmake-gtest ament-cmake-pytest ament-lint-auto ament-lint-common osrf-testing-tools-cpp performance-test-fixture rcutils ];
+  propagatedBuildInputs = [ python3 ];
+  nativeBuildInputs = [ ament-cmake ament-cmake-python ament-cmake-ros-core python3 ];
+  rosBuildExportDepends = [ ament-cmake-ros-core fastcdr rmw rosidl-buffer-backend rosidl-generator-c rosidl-generator-cpp rosidl-runtime-c rosidl-runtime-cpp rosidl-typesupport-interface ];
+  rosExecDepends = [ ament-index-python fastcdr rmw rosidl-buffer-backend rosidl-cli rosidl-pycommon rosidl-runtime-c ];
+
+  meta = {
+    description = "Generate the C++ interfaces for eProsima FastRTPS.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

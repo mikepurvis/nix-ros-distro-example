@@ -1,0 +1,28 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake, ament-cmake-gtest, ament-cmake-ros-core, ament-lint-auto, ament-lint-common, bullet, geometry-msgs, tf2, tf2-ros }:
+buildRosPackage {
+  pname = "ros-mango-tf2-bullet";
+  version = "0.46.4-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/rolling/tf2_bullet/0.46.4-1.tar.gz";
+    name = "0.46.4-1.tar.gz";
+    sha256 = "5adcb5eaf05fdce0b2f54dd66313f5fc62ba7cac0bd0a8c8a757ba11be1df2e9";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake geometry-msgs tf2 tf2-ros ];
+  checkInputs = [ ament-cmake-gtest ament-cmake-ros-core ament-lint-auto ament-lint-common ];
+  propagatedBuildInputs = [ bullet ];
+  nativeBuildInputs = [ ament-cmake ];
+  rosBuildExportDepends = [ geometry-msgs tf2 tf2-ros ];
+  rosExecDepends = [ geometry-msgs tf2 tf2-ros ];
+
+  meta = {
+    description = "tf2_bullet";
+    license = with lib.licenses; [ bsdOriginal ];
+  };
+}

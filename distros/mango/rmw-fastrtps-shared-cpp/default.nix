@@ -1,0 +1,27 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake-gmock, ament-cmake-gtest, ament-cmake-ros-core, ament-lint-auto, ament-lint-common, fastcdr, fastdds, osrf-testing-tools-cpp, rcpputils, rcutils, rmw, rmw-dds-common, rmw-security-common, rosidl-buffer-backend-registry, rosidl-dynamic-typesupport, rosidl-runtime-c, rosidl-typesupport-introspection-c, rosidl-typesupport-introspection-cpp, tracetools }:
+buildRosPackage {
+  pname = "ros-mango-rmw-fastrtps-shared-cpp";
+  version = "9.6.0-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/rmw_fastrtps-release/archive/release/rolling/rmw_fastrtps_shared_cpp/9.6.0-1.tar.gz";
+    name = "9.6.0-1.tar.gz";
+    sha256 = "88035cf208903649a7c121a90e909afd90af28b9a47a9ad249a8c47b25fd5204";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake-ros-core fastcdr fastdds rcpputils rcutils rmw rmw-dds-common rmw-security-common rosidl-buffer-backend-registry rosidl-dynamic-typesupport rosidl-runtime-c rosidl-typesupport-introspection-c rosidl-typesupport-introspection-cpp tracetools ];
+  checkInputs = [ ament-cmake-gmock ament-cmake-gtest ament-lint-auto ament-lint-common osrf-testing-tools-cpp ];
+  nativeBuildInputs = [ ament-cmake-ros-core ];
+  rosBuildExportDepends = [ fastcdr fastdds rcpputils rcutils rmw rmw-dds-common rmw-security-common rosidl-dynamic-typesupport rosidl-typesupport-introspection-c rosidl-typesupport-introspection-cpp tracetools ];
+  rosExecDepends = [ rmw-dds-common ];
+
+  meta = {
+    description = "Code shared on static and dynamic type support of rmw_fastrtps_cpp.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}

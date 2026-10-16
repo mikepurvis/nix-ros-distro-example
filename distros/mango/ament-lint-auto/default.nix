@@ -1,0 +1,25 @@
+
+# Copyright 2026 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+{ lib, buildRosPackage, fetchurl, ament-cmake-core, ament-cmake-test }:
+buildRosPackage {
+  pname = "ros-mango-ament-lint-auto";
+  version = "0.21.2-r1";
+
+  src = fetchurl {
+    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/rolling/ament_lint_auto/0.21.2-1.tar.gz";
+    name = "0.21.2-1.tar.gz";
+    sha256 = "e612271007c00a82cb886435a3abe23c33cb293e488a9f9d636cf74aa90f201f";
+  };
+
+  buildType = "ament_cmake";
+  buildInputs = [ ament-cmake-core ament-cmake-test ];
+  nativeBuildInputs = [ ament-cmake-core ament-cmake-test ];
+  rosBuildExportDepends = [ ament-cmake-core ament-cmake-test ];
+
+  meta = {
+    description = "The auto-magic functions for ease to use of the ament linters in CMake.";
+    license = with lib.licenses; [ asl20 ];
+  };
+}
