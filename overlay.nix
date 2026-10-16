@@ -1,6 +1,5 @@
-# The nixpkgs overlay this repo contributes, given nix-ros-overlay's lib
-# (flake output `lib`, or lib/distro-overlays.nix for a plain import). Goes
-# after nix-ros-overlay's own overlay.
+# The nixpkgs overlay this repo contributes, given nix-ros-overlay's flake
+# output `lib`. Goes after nix-ros-overlay's own overlay.
 rosLib: final: prev: prev.lib.composeManyExtensions [
   # Our packages on top of the bundled jazzy, under a name of our own, so
   # rosPackages.jazzy stays upstream's and both can be built side by side.
