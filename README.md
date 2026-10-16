@@ -118,22 +118,22 @@ fixups may need overrides of their own.
 
 [develop]: https://github.com/mikepurvis/nix-ros-overlay/tree/mkrosdistro-develop-AN2ATG0
 
-## What upstream would likely accept
+## Design notes and open questions
 
-- The `distro-overlay.nix` argument split and `mkRosDistro` look like a safe
-  sell. They are additive, change no hashes, and fix the existing
-  `mkRosDistroOverlay` awkwardness. `nix-ros-overlay`'s NixOS module already
-  calls `overrideScope` on a distro, so they support customisation in principle.
-- `lib/distro-overlays.nix` works without flakes, which matters given
-  upstream's stance; the flake `lib` output just re-exports it. A
-  pkgs-independent flake `lib` is a common convention.
-- The pruning of dangling fixups is the part to expect questions on: the
-  maintainer may prefer `upstreamOverrides = false` plus documentation over
-  filtering. Bundled jazzy still carries one dangling fixup of its own,
-  `gazebo-ros`, which is ROS 1 only. Upstream issue #812 hit the same
-  class of problem.
-- A superflore change to write `generated.nix` with `--only`, or an output
-  path flag, is unnecessary given directory support. Making `update-overlay`
-  reachable without flakes (for example `pkgs.rosPackages.update-overlay`, with
-  `rosdistro` defaulting to a `fetchTarball` from `flake.lock`) would be a
-  small follow-up if a non-flake user asks.
+- The `distro-overlay.nix` argument split and `mkRosDistro` are additive and
+  change no hashes for the bundled distros. They also make the existing
+  `mkRosDistroOverlay` easier to call: it takes the arguments alone, rather
+  than the arguments followed by `self super`.
+- `lib/distro-overlays.nix` is a plain file that doesn't need `pkgs`, so it
+  works without flakes. The flake's `lib` output re-exports it.
+- Pruning fixups for packages a set doesn't have is the least obvious part.
+  The alternative is `upstreamOverrides = false` and leaving the fixups to
+  the consumer, which is simpler but means repeating vendor hashes and
+  similar fixes. The bundled jazzy carries one such fixup of its own,
+  `gazebo-ros`, which only exists in ROS 1. That is the class of problem in
+  #812.
+- superflore needs no changes: it already writes to any git repo and reads
+  any rosdistro index, and `generated` accepts the directory that `--only`
+  leaves behind. `update-overlay` is only reachable through the flake. A
+  non-flake entry point, with `rosdistro` defaulting to the commit in
+  `flake.lock`, could follow if anyone needs one.
