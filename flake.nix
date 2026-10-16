@@ -16,13 +16,13 @@
     overlays.default = import ./overlay.nix nix-ros-overlay.lib;
 
     legacyPackages = forAllSystems (pkgs: {
-      inherit (pkgs.rosPackages) jazzy example-jazzy example-standalone;
+      inherit (pkgs.rosPackages) jazzy banana example-standalone;
     });
 
     packages = forAllSystems (pkgs: {
-      inherit (pkgs.rosPackages.example-jazzy) angles ackermann-msgs example-interfaces;
-      env = pkgs.rosPackages.example-jazzy.buildEnv {
-        paths = with pkgs.rosPackages.example-jazzy; [ angles ackermann-msgs example-interfaces ];
+      inherit (pkgs.rosPackages.banana) angles ackermann-msgs example-interfaces;
+      env = pkgs.rosPackages.banana.buildEnv {
+        paths = with pkgs.rosPackages.banana; [ angles ackermann-msgs example-interfaces ];
       };
     });
   };

@@ -5,7 +5,7 @@ rosLib: final: prev: prev.lib.composeManyExtensions [
   # rosPackages.jazzy stays upstream's and both can be built side by side.
   # Packages we regenerate replace upstream's and still get its fixups.
   (rosLib.rosDistroOverlay {
-    name = "example-jazzy";
+    name = "banana";
     distro = "jazzy";
     version = 2;
     generated = [ (rosLib.bundledGenerated "jazzy") ./distros/jazzy ];

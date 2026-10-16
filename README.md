@@ -20,17 +20,17 @@ branch [`mkrosdistro-AN2ATG0`][branch] of the overlay; see
   ```
 
   The output matches the overlay's own expressions byte for byte.
-- `overlay.nix` adds `rosPackages.example-jazzy` (bundled jazzy plus these)
+- `overlay.nix` adds `rosPackages.banana` (bundled jazzy plus these)
   and `rosPackages.example-standalone` (these alone).
 - `flake.nix` is the only entry point. The overlay's non-flake support
   matters upstream, not to a consumer like this one.
 
 ```sh
 nix build .#env                      # the three packages in a ros-env
-nix build .#legacyPackages.x86_64-linux.example-jazzy.angles
+nix build .#legacyPackages.x86_64-linux.banana.angles
 ```
 
-`rosPackages.example-jazzy.<pkg>.drvPath` equals `rosPackages.jazzy.<pkg>.drvPath`
+`rosPackages.banana.<pkg>.drvPath` equals `rosPackages.jazzy.<pkg>.drvPath`
 for every package checked, ours and upstream's, so a repo building this way
 shares the binary cache with the overlay.
 
