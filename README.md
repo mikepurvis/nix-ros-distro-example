@@ -15,13 +15,16 @@ into this repo and built with the overlay's machinery.
 
 ### banana: a few packages over the bundled jazzy
 
-`distros/jazzy/{angles,ackermann-msgs,example-interfaces}`, generated from
-the rosdistro the overlay pins:
+`distros/banana/{angles,ackermann-msgs,example-interfaces}`, generated from
+the jazzy in the rosdistro the overlay pins:
 
 ```sh
-nix run .#update-overlay -- --dry-run --no-branch --output-repository-path . \
-  --tar-archive-dir .tar --ros-distro jazzy --only angles ackermann_msgs example_interfaces
+nix run .#update-banana -- angles ackermann_msgs example_interfaces
 ```
+
+superflore always writes under `distros/<ros distro>` and commits to the
+repo it is given, so `update-banana` runs it in a scratch repo and copies the
+expressions into `distros/banana`. Commit the result yourself.
 
 `rosPackages.banana` is the bundled jazzy with these laid over it, so anything
 not generated here falls through to jazzy. Its drvPaths equal

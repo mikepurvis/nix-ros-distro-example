@@ -38,8 +38,24 @@
 
       mango-ros-base = pkgs.rosPackages.mango.ros-base;
 
-      # Regenerates banana's packages, from the rosdistro nix-ros-overlay pins.
-      inherit update-overlay;
+      # Regenerates banana's packages, from the rosdistro nix-ros-overlay pins:
+      # `nix run .#update-banana -- <ros package>...`. superflore writes under
+      # distros/<ros distro>, jazzy here, and commits to the repo it is given,
+      # so it runs in a scratch repo and the expressions are copied across.
+      update-banana = pkgs.writeShellApplication {
+        name = "update-banana";
+        runtimeInputs = [ update-overlay pkgs.git ];
+        text = ''
+          scratch=$(mktemp -d)
+          trap 'rm -rf "$scratch"' EXIT
+          git -C "$scratch" init -q
+          git -C "$scratch" commit -q --allow-empty -m scratch
+          update-overlay --dry-run --no-branch --output-repository-path "$scratch" \
+            --tar-archive-dir "$PWD/.tar" --ros-distro jazzy --only "$@"
+          mkdir -p distros/banana
+          cp -r "$scratch"/distros/jazzy/. distros/banana/
+        '';
+      };
 
       # Regenerates mango, from rosdistro/. update-overlay keys its package.xml
       # cache on `rev`, so it follows the contents of rosdistro/ as well as

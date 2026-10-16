@@ -8,7 +8,7 @@ rosLib: final: prev: prev.lib.composeManyExtensions [
     name = "banana";
     distro = "jazzy";
     version = 2;
-    generated = [ (rosLib.bundledGenerated "jazzy") ./distros/jazzy ];
+    generated = [ (rosLib.bundledGenerated "jazzy") ./distros/banana ];
   })
 
   # mango: a distro of its own, generated from rosdistro/ (a snapshot of
@@ -22,5 +22,5 @@ rosLib: final: prev: prev.lib.composeManyExtensions [
   })
 
   # The lightest touch: patch packages into the bundled distro in place.
-  # (rosLib.extendRosDistro "jazzy" ./distros/jazzy)
+  # (rosLib.extendRosDistro "jazzy" ./distros/banana)
 ] final prev
