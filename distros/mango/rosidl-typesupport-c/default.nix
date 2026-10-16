@@ -14,12 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-ros-core rcpputils rcutils rosidl-runtime-c rosidl-typesupport-introspection-c ];
+  buildInputs = [ ament-cmake-ros-core rosidl-typesupport-introspection-c ];
   checkInputs = [ ament-cmake-gtest ament-cmake-pytest ament-lint-auto ament-lint-common mimick-vendor performance-test-fixture ];
-  propagatedBuildInputs = [ python3 ];
-  nativeBuildInputs = [ ament-cmake-ros-core python3 ];
-  rosBuildExportDepends = [ ament-cmake-core rcpputils rcutils rosidl-runtime-c ];
-  rosExecDepends = [ ament-index-python rcpputils rcutils rosidl-cli rosidl-generator-c rosidl-pycommon rosidl-typesupport-interface ];
+  propagatedBuildInputs = [ ament-cmake-core ament-index-python python3 rcpputils rcutils rosidl-cli rosidl-generator-c rosidl-pycommon rosidl-runtime-c rosidl-typesupport-interface ];
+  nativeBuildInputs = [ ament-cmake-core ament-cmake-ros-core python3 ];
 
   meta = {
     description = "Generate the type support for C messages.";

@@ -14,10 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-core ament-cmake-test ];
+  buildInputs = [ ament-cmake-core ];
   checkInputs = [ ament-cmake-copyright ament-cmake-lint-cmake ];
-  nativeBuildInputs = [ ament-cmake-core ament-cmake-test ];
-  rosBuildExportDepends = [ ament-clang-format ament-cmake-test ];
+  propagatedBuildInputs = [ ament-clang-format ament-cmake-test ];
+  nativeBuildInputs = [ ament-clang-format ament-cmake-core ament-cmake-test ];
 
   meta = {
     description = "The CMake API for ament_clang_format to lint C / C++ code using clang format.";

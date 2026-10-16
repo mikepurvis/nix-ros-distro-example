@@ -14,12 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-ros-core ament-index-cpp class-loader rcpputils rcutils ];
+  buildInputs = [ ament-cmake ];
   checkInputs = [ ament-cmake-gtest ament-lint-auto ament-lint-common ];
-  propagatedBuildInputs = [ tinyxml-2 ];
+  propagatedBuildInputs = [ ament-cmake-ros-core ament-index-cpp class-loader rcpputils rcutils tinyxml-2 ];
   nativeBuildInputs = [ ament-cmake ament-cmake-ros-core ];
-  rosBuildExportDepends = [ ament-cmake-ros-core ament-index-cpp class-loader rcpputils rcutils ];
-  rosExecDepends = [ ament-index-cpp class-loader rcpputils rcutils ];
 
   meta = {
     description = "The pluginlib package provides tools for writing and dynamically loading plugins using the ROS build infrastructure.

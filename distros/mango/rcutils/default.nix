@@ -14,10 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-ros-core ];
+  buildInputs = [ ament-cmake ];
   checkInputs = [ ament-cmake-gmock ament-cmake-gtest ament-lint-auto ament-lint-common launch launch-testing launch-testing-ament-cmake mimick-vendor osrf-testing-tools-cpp performance-test-fixture ];
+  propagatedBuildInputs = [ ament-cmake-ros-core ];
   nativeBuildInputs = [ ament-cmake ament-cmake-ros-core ];
-  rosBuildExportDepends = [ ament-cmake-ros-core ];
 
   meta = {
     description = "Package containing various utility types and functions for C";

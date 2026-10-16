@@ -16,9 +16,8 @@ buildRosPackage {
   buildType = "ament_cmake";
   buildInputs = [ ament-cmake ];
   checkInputs = [ ament-cmake-mypy ament-cmake-pytest ament-lint-auto ament-lint-common python3Packages.pytest ];
-  propagatedBuildInputs = [ python3Packages.lark ];
+  propagatedBuildInputs = [ python3Packages.lark rosidl-adapter ];
   nativeBuildInputs = [ ament-cmake ];
-  rosExecDepends = [ rosidl-adapter ];
 
   meta = {
     description = "The parser for `.idl` ROS interface files.";

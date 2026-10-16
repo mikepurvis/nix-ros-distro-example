@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-ros-core ament-index-cpp fastcdr nlohmann_json rcpputils rcutils rmw rmw-test-fixture rosidl-buffer-backend-registry rosidl-typesupport-fastrtps-c rosidl-typesupport-fastrtps-cpp tracetools zenoh-cpp-vendor ];
+  buildInputs = [ ament-cmake nlohmann_json ];
   checkInputs = [ ament-lint-auto ament-lint-common ];
+  propagatedBuildInputs = [ ament-cmake-ros-core ament-index-cpp fastcdr rcpputils rcutils rmw rmw-test-fixture rosidl-buffer-backend-registry rosidl-typesupport-fastrtps-c rosidl-typesupport-fastrtps-cpp tracetools zenoh-cpp-vendor ];
   nativeBuildInputs = [ ament-cmake ament-cmake-ros-core ];
-  rosBuildExportDepends = [ ament-cmake-ros-core ament-index-cpp fastcdr rcpputils rcutils rmw rmw-test-fixture rosidl-buffer-backend-registry rosidl-typesupport-fastrtps-c rosidl-typesupport-fastrtps-cpp tracetools zenoh-cpp-vendor ];
-  rosExecDepends = [ ament-index-cpp fastcdr rcpputils rcutils rmw rmw-test-fixture rosidl-buffer-backend-registry rosidl-typesupport-fastrtps-c rosidl-typesupport-fastrtps-cpp tracetools zenoh-cpp-vendor ];
 
   meta = {
     description = "A ROS 2 middleware implementation using zenoh-cpp";

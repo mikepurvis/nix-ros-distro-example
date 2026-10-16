@@ -14,10 +14,9 @@ buildRosPackage {
   };
 
   buildType = "cmake";
-  buildInputs = [ cmake git iceoryx-hoofs ];
+  buildInputs = [ cmake git ];
+  propagatedBuildInputs = [ iceoryx-hoofs ];
   nativeBuildInputs = [ cmake git ];
-  rosBuildExportDepends = [ iceoryx-hoofs ];
-  rosExecDepends = [ iceoryx-hoofs ];
 
   meta = {
     description = "Eclipse iceoryx inter-process-communication (IPC) middleware Posix Shared Memory Library and middleware daemon (RouDi)";

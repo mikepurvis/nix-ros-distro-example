@@ -15,7 +15,7 @@ buildRosPackage {
 
   buildType = "ament_python";
   checkInputs = [ ament-flake8 ament-pep257 python3Packages.pytest ];
-  rosExecDepends = [ ament-lint ];
+  propagatedBuildInputs = [ ament-lint ];
 
   meta = {
     description = "The ability to check source files for copyright and license

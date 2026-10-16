@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-gen-version-h ament-cmake-ros-core builtin-interfaces geometry-msgs message-filters rcl-interfaces rclcpp rclcpp-action rclcpp-components rcpputils rcutils tf2 tf2-msgs ];
+  buildInputs = [ ament-cmake ament-cmake-gen-version-h ament-cmake-ros-core ];
   checkInputs = [ ament-cmake-ros ament-lint-auto ament-lint-common rosgraph-msgs ];
+  propagatedBuildInputs = [ builtin-interfaces geometry-msgs message-filters rcl-interfaces rclcpp rclcpp-action rclcpp-components rcpputils rcutils tf2 tf2-msgs ];
   nativeBuildInputs = [ ament-cmake ament-cmake-gen-version-h ament-cmake-ros-core ];
-  rosBuildExportDepends = [ builtin-interfaces geometry-msgs message-filters rcl-interfaces rclcpp rclcpp-action rclcpp-components rcpputils rcutils tf2 tf2-msgs ];
-  rosExecDepends = [ builtin-interfaces geometry-msgs message-filters rcl-interfaces rclcpp rclcpp-action rclcpp-components rcpputils rcutils tf2 tf2-msgs ];
 
   meta = {
     description = "This package contains the C++ ROS bindings for the tf2 library";

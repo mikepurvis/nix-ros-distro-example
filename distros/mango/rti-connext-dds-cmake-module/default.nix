@@ -14,10 +14,9 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ];
   checkInputs = [ ament-lint-auto ament-lint-common ];
+  propagatedBuildInputs = [ ament-cmake ];
   nativeBuildInputs = [ ament-cmake ];
-  rosBuildExportDepends = [ ament-cmake ];
 
   meta = {
     description = "Helper module to provide access to RTI products like Connext DDS Professional";

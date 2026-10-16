@@ -14,10 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-core ament-cmake-test ];
+  buildInputs = [ ament-cmake-core ];
   checkInputs = [ ament-cmake-copyright ament-cmake-lint-cmake ];
-  nativeBuildInputs = [ ament-cmake-core ament-cmake-test ];
-  rosBuildExportDepends = [ ament-cmake-test ament-pep257 ];
+  propagatedBuildInputs = [ ament-cmake-test ament-pep257 ];
+  nativeBuildInputs = [ ament-cmake-core ament-cmake-test ament-pep257 ];
 
   meta = {
     description = "The CMake API for ament_pep257 to check code against the docstring style conventions in

@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake geometry-msgs rosidl-default-generators ];
+  buildInputs = [ ament-cmake rosidl-default-generators ];
   checkInputs = [ ament-lint-common ];
+  propagatedBuildInputs = [ geometry-msgs rosidl-default-runtime ];
   nativeBuildInputs = [ ament-cmake rosidl-default-generators ];
-  rosBuildExportDepends = [ geometry-msgs ];
-  rosExecDepends = [ geometry-msgs rosidl-default-runtime ];
 
   meta = {
     description = "A package containing some message definitions which describe geometric shapes.";

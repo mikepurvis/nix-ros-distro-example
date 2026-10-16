@@ -14,9 +14,8 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-gmock ament-cmake-gtest ];
+  propagatedBuildInputs = [ ament-cmake ament-cmake-gmock ament-cmake-gtest ];
   nativeBuildInputs = [ ament-cmake ament-cmake-gmock ament-cmake-gtest ];
-  rosBuildExportDepends = [ ament-cmake ament-cmake-gmock ament-cmake-gtest ];
 
   meta = {
     description = "The auto-magic functions for ease to use of the ament buildsystem in CMake.";

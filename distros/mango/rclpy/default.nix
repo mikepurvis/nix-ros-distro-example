@@ -14,12 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-ros-core lifecycle-msgs python3 python3Packages.pybind11 rcl rcl-action rcl-interfaces rcl-lifecycle rcl-logging-interface rcl-yaml-param-parser rcpputils rcutils rmw rmw-implementation rmw-implementation-cmake rosidl-runtime-c type-description-interfaces ];
+  buildInputs = [ ament-cmake ament-cmake-ros-core python3 python3Packages.pybind11 rmw-implementation-cmake ];
   checkInputs = [ ament-cmake-gtest ament-cmake-mypy ament-cmake-pytest ament-lint-auto ament-lint-common python3Packages.pytest python3Packages.pytest-asyncio rosidl-generator-py test-msgs ];
-  propagatedBuildInputs = [ python3Packages.pyyaml python3Packages.typing-extensions ];
+  propagatedBuildInputs = [ action-msgs ament-index-python builtin-interfaces lifecycle-msgs python3Packages.pyyaml python3Packages.typing-extensions rcl rcl-action rcl-interfaces rcl-lifecycle rcl-logging-interface rcl-yaml-param-parser rcpputils rcutils rmw rmw-implementation rosgraph-msgs rosidl-pycommon rosidl-runtime-c rpyutils service-msgs type-description-interfaces unique-identifier-msgs ];
   nativeBuildInputs = [ ament-cmake ament-cmake-ros-core ];
-  rosBuildExportDepends = [ lifecycle-msgs rcl rcl-action rcl-interfaces rcl-lifecycle rcl-logging-interface rcl-yaml-param-parser rcpputils rcutils rmw rmw-implementation rosidl-runtime-c type-description-interfaces ];
-  rosExecDepends = [ action-msgs ament-index-python builtin-interfaces lifecycle-msgs rcl rcl-action rcl-interfaces rcl-lifecycle rcl-logging-interface rcl-yaml-param-parser rcpputils rcutils rmw rmw-implementation rosgraph-msgs rosidl-pycommon rosidl-runtime-c rpyutils service-msgs type-description-interfaces unique-identifier-msgs ];
 
   meta = {
     description = "Package containing the Python client.";

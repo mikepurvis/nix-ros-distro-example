@@ -16,8 +16,8 @@ buildRosPackage {
   buildType = "ament_cmake";
   buildInputs = [ ament-cmake ];
   checkInputs = [ ament-lint-auto ament-lint-common ];
-  nativeBuildInputs = [ ament-cmake ];
-  rosBuildExportDepends = [ action-msgs ament-cmake-core rosidl-core-generators service-msgs ];
+  propagatedBuildInputs = [ action-msgs ament-cmake-core rosidl-core-generators service-msgs ];
+  nativeBuildInputs = [ action-msgs ament-cmake ament-cmake-core rosidl-core-generators service-msgs ];
 
   meta = {
     description = "A configuration package defining the default ROS interface generators.";

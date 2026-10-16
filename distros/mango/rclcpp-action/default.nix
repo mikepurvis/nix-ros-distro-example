@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ action-msgs ament-cmake-ros ament-cmake-ros-core rcl rcl-action rclcpp rcpputils rosidl-runtime-c ];
+  buildInputs = [ ament-cmake-ros ament-cmake-ros-core ];
   checkInputs = [ ament-cmake-gtest ament-lint-auto ament-lint-common mimick-vendor performance-test-fixture test-msgs ];
+  propagatedBuildInputs = [ action-msgs rcl rcl-action rclcpp rcpputils rosidl-runtime-c ];
   nativeBuildInputs = [ ament-cmake-ros ];
-  rosBuildExportDepends = [ action-msgs rcl rcl-action rclcpp rcpputils rosidl-runtime-c ];
-  rosExecDepends = [ action-msgs rcl rcl-action rclcpp rcpputils ];
 
   meta = {
     description = "Adds action APIs for C++.";

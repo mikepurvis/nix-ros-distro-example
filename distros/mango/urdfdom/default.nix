@@ -14,12 +14,10 @@ buildRosPackage {
   };
 
   buildType = "cmake";
-  buildInputs = [ cmake console-bridge-vendor urdfdom-headers ];
+  buildInputs = [ cmake ];
   checkInputs = [ python3 ];
-  propagatedBuildInputs = [ console-bridge tinyxml-2 ];
+  propagatedBuildInputs = [ console-bridge console-bridge-vendor tinyxml-2 urdfdom-headers ];
   nativeBuildInputs = [ cmake ];
-  rosBuildExportDepends = [ console-bridge-vendor urdfdom-headers ];
-  rosExecDepends = [ console-bridge-vendor urdfdom-headers ];
 
   meta = {
     description = "A library to access URDFs using the DOM model.";

@@ -15,8 +15,8 @@ buildRosPackage {
 
   buildType = "ament_cmake";
   buildInputs = [ ament-cmake ];
+  propagatedBuildInputs = [ rosbag2-storage-mcap rosbag2-storage-sqlite3 ];
   nativeBuildInputs = [ ament-cmake ];
-  rosExecDepends = [ rosbag2-storage-mcap rosbag2-storage-sqlite3 ];
 
   meta = {
     description = "Intermediate metapackage to point at default storage plugin(s) for rosbag2";

@@ -16,8 +16,8 @@ buildRosPackage {
   buildType = "ament_cmake";
   buildInputs = [ ament-cmake ament-cmake-test ];
   checkInputs = [ ament-lint-auto ament-lint-common ];
+  propagatedBuildInputs = [ ros2cli sros2 ];
   nativeBuildInputs = [ ament-cmake ];
-  rosBuildExportDepends = [ ros2cli sros2 ];
 
   meta = {
     description = "CMake macros to configure security";

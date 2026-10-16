@@ -15,7 +15,7 @@ buildRosPackage {
 
   buildType = "ament_python";
   checkInputs = [ ament-copyright ament-flake8 ament-pep257 ament-pycodestyle ament-xmllint python3Packages.pytest ];
-  rosExecDepends = [ uncrustify-vendor ];
+  propagatedBuildInputs = [ uncrustify-vendor ];
 
   meta = {
     description = "The ability to check code against style conventions using uncrustify

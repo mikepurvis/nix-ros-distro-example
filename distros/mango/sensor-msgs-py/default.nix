@@ -15,8 +15,7 @@ buildRosPackage {
 
   buildType = "ament_python";
   checkInputs = [ ament-copyright ament-flake8 ament-pep257 ament-xmllint python3Packages.pytest ];
-  propagatedBuildInputs = [ python3Packages.numpy ];
-  rosExecDepends = [ sensor-msgs std-msgs ];
+  propagatedBuildInputs = [ python3Packages.numpy sensor-msgs std-msgs ];
 
   meta = {
     description = "A package for easy creation and reading of PointCloud2 messages in Python.";

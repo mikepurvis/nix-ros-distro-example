@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-python ament-cmake-ros ament-cmake-ros-core python3 python3Packages.pybind11 rosbag2-compression rosbag2-cpp rosbag2-storage rosbag2-transport ];
+  buildInputs = [ ament-cmake-python ament-cmake-ros ament-cmake-ros-core python3 python3Packages.pybind11 ];
   checkInputs = [ ament-lint-auto ament-lint-common python3Packages.pytest rcl-interfaces rosbag2-compression-zstd rosbag2-storage-default-plugins rosbag2-test-common rosbag2-test-msgdefs rosidl-runtime-py std-msgs ];
+  propagatedBuildInputs = [ rclpy rosbag2-compression rosbag2-cpp rosbag2-storage rosbag2-transport rpyutils ];
   nativeBuildInputs = [ ament-cmake-python ament-cmake-ros ament-cmake-ros-core ];
-  rosBuildExportDepends = [ rosbag2-compression rosbag2-cpp rosbag2-storage rosbag2-transport ];
-  rosExecDepends = [ rclpy rosbag2-compression rosbag2-cpp rosbag2-storage rosbag2-transport rpyutils ];
 
   meta = {
     description = "Python API for rosbag2";

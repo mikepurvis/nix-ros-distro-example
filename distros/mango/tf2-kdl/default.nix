@@ -14,12 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-python builtin-interfaces eigen eigen3-cmake-module geometry-msgs tf2 tf2-ros ];
+  buildInputs = [ ament-cmake ament-cmake-python eigen eigen3-cmake-module ];
   checkInputs = [ ament-cmake-gtest ament-cmake-ros-core rclcpp ];
-  propagatedBuildInputs = [ orocos-kdl python3Packages.pykdl ];
+  propagatedBuildInputs = [ builtin-interfaces geometry-msgs orocos-kdl python3Packages.pykdl tf2 tf2-ros tf2-ros-py ];
   nativeBuildInputs = [ ament-cmake ament-cmake-python eigen3-cmake-module ];
-  rosBuildExportDepends = [ builtin-interfaces geometry-msgs tf2 tf2-ros ];
-  rosExecDepends = [ builtin-interfaces geometry-msgs tf2 tf2-ros tf2-ros-py ];
 
   meta = {
     description = "KDL binding for tf2";

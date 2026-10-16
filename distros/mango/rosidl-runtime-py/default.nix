@@ -15,8 +15,7 @@ buildRosPackage {
 
   buildType = "ament_python";
   checkInputs = [ ament-copyright ament-flake8 ament-pep257 ament-xmllint python3Packages.pytest std-msgs std-srvs test-msgs ];
-  propagatedBuildInputs = [ python3Packages.numpy python3Packages.pyyaml ];
-  rosExecDepends = [ rosidl-buffer-py rosidl-parser ];
+  propagatedBuildInputs = [ python3Packages.numpy python3Packages.pyyaml rosidl-buffer-py rosidl-parser ];
 
   meta = {
     description = "Runtime utilities for working with generated ROS interfaces in Python.";

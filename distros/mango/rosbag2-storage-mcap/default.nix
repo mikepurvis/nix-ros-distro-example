@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-python ament-cmake-ros-core ament-index-cpp mcap-vendor pluginlib rcutils rosbag2-storage ];
+  buildInputs = [ ament-cmake ament-cmake-python ament-cmake-ros-core ];
   checkInputs = [ ament-cmake-clang-format ament-cmake-gmock ament-lint-auto ament-lint-common rosbag2-test-common std-msgs ];
+  propagatedBuildInputs = [ ament-index-cpp mcap-vendor pluginlib rcutils rosbag2-storage ];
   nativeBuildInputs = [ ament-cmake ament-cmake-python ament-cmake-ros-core ];
-  rosBuildExportDepends = [ ament-index-cpp mcap-vendor pluginlib rcutils rosbag2-storage ];
-  rosExecDepends = [ ament-index-cpp mcap-vendor pluginlib rcutils rosbag2-storage ];
 
   meta = {
     description = "rosbag2 storage plugin using the MCAP file format";

@@ -14,9 +14,9 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-core ament-cmake-test ament-lint-cmake ];
+  buildInputs = [ ament-cmake-core ];
+  propagatedBuildInputs = [ ament-cmake-test ament-lint-cmake ];
   nativeBuildInputs = [ ament-cmake-core ament-cmake-test ament-lint-cmake ];
-  rosBuildExportDepends = [ ament-cmake-test ament-lint-cmake ];
 
   meta = {
     description = "The CMake API for ament_lint_cmake to lint CMake code using cmakelint.";

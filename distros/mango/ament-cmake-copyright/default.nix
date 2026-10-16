@@ -14,10 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-core ament-cmake-test ament-copyright ];
+  buildInputs = [ ament-cmake-core ];
   checkInputs = [ ament-cmake-lint-cmake ];
+  propagatedBuildInputs = [ ament-cmake-test ament-copyright ];
   nativeBuildInputs = [ ament-cmake-core ament-cmake-test ament-copyright ];
-  rosBuildExportDepends = [ ament-cmake-test ament-copyright ];
 
   meta = {
     description = "The CMake API for ament_copyright to check every source file contains copyright reference.";

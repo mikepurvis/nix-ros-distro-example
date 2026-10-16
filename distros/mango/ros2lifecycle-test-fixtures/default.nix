@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-ros-core rclcpp rclcpp-lifecycle ];
+  buildInputs = [ ament-cmake ament-cmake-ros-core ];
   checkInputs = [ ament-lint-auto ament-lint-common ];
+  propagatedBuildInputs = [ rclcpp rclcpp-lifecycle ];
   nativeBuildInputs = [ ament-cmake ament-cmake-ros-core ];
-  rosBuildExportDepends = [ rclcpp rclcpp-lifecycle ];
-  rosExecDepends = [ rclcpp rclcpp-lifecycle ];
 
   meta = {
     description = "Package containing fixture nodes for ros2lifecycle tests";

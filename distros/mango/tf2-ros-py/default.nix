@@ -15,7 +15,7 @@ buildRosPackage {
 
   buildType = "ament_python";
   checkInputs = [ ament-copyright ament-flake8 ament-pep257 ament-xmllint python3Packages.pytest rmw-test-fixture-implementation ];
-  rosExecDepends = [ geometry-msgs rclpy sensor-msgs std-msgs tf2-msgs tf2-py ];
+  propagatedBuildInputs = [ geometry-msgs rclpy sensor-msgs std-msgs tf2-msgs tf2-py ];
 
   meta = {
     description = "This package contains the ROS Python bindings for the tf2 library";

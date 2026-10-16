@@ -14,10 +14,9 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-core ament-cmake-test ];
   checkInputs = [ ament-cmake-copyright ament-cmake-lint-cmake ];
-  nativeBuildInputs = [ ament-cmake-core ament-cmake-test ];
-  rosBuildExportDepends = [ ament-cmake-core ament-cmake-test ament-cppcheck ];
+  propagatedBuildInputs = [ ament-cmake-core ament-cmake-test ament-cppcheck ];
+  nativeBuildInputs = [ ament-cmake-core ament-cmake-test ament-cppcheck ];
 
   meta = {
     description = "The CMake API for ament_cppcheck to perform static code analysis on C/C++

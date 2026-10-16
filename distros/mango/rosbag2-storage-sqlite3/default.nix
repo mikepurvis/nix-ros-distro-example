@@ -14,12 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-python ament-cmake-ros-core pluginlib rcpputils rcutils rosbag2-storage ];
+  buildInputs = [ ament-cmake ament-cmake-python ament-cmake-ros-core ];
   checkInputs = [ ament-cmake-gmock ament-lint-auto ament-lint-common rosbag2-test-common std-msgs ];
-  propagatedBuildInputs = [ sqlite yaml-cpp ];
+  propagatedBuildInputs = [ pluginlib rcpputils rcutils rosbag2-storage sqlite yaml-cpp ];
   nativeBuildInputs = [ ament-cmake ament-cmake-python ament-cmake-ros-core ];
-  rosBuildExportDepends = [ pluginlib rcpputils rcutils rosbag2-storage ];
-  rosExecDepends = [ pluginlib rcpputils rcutils rosbag2-storage ];
 
   meta = {
     description = "ROSBag2 SQLite3 storage plugin";

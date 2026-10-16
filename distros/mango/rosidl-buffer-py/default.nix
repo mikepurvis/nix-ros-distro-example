@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-python python3 python3Packages.pybind11 rosidl-buffer ];
+  buildInputs = [ ament-cmake ament-cmake-python python3 python3Packages.pybind11 ];
   checkInputs = [ ament-lint-auto ament-lint-common ];
+  propagatedBuildInputs = [ rosidl-buffer ];
   nativeBuildInputs = [ ament-cmake ament-cmake-python ];
-  rosBuildExportDepends = [ rosidl-buffer ];
-  rosExecDepends = [ rosidl-buffer ];
 
   meta = {
     description = "Python bindings for rosidl::Buffer, providing a Buffer class that

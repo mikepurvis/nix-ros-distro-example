@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-gen-version-h ament-cmake-ros lifecycle-msgs rcl rcutils rmw rosidl-runtime-c tracetools ];
+  buildInputs = [ ament-cmake-gen-version-h ament-cmake-ros ];
   checkInputs = [ ament-cmake-gtest ament-cmake-ros-core ament-lint-auto ament-lint-common osrf-testing-tools-cpp ];
+  propagatedBuildInputs = [ lifecycle-msgs rcl rcutils rmw rosidl-runtime-c tracetools ];
   nativeBuildInputs = [ ament-cmake-gen-version-h ament-cmake-ros ];
-  rosBuildExportDepends = [ lifecycle-msgs rcl rcutils rmw rosidl-runtime-c tracetools ];
-  rosExecDepends = [ lifecycle-msgs rcl rcutils rmw rosidl-runtime-c tracetools ];
 
   meta = {
     description = "Package containing a C-based lifecycle implementation";

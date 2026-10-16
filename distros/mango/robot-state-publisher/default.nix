@@ -14,12 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-ros-core builtin-interfaces geometry-msgs kdl-parser rcl-interfaces rclcpp rclcpp-components sensor-msgs std-msgs tf2-ros urdf ];
+  buildInputs = [ ament-cmake ament-cmake-ros-core ];
   checkInputs = [ ament-cmake-gtest ament-lint-auto ament-lint-common launch-ros launch-testing-ament-cmake launch-testing-ros tf2-ros-py ];
-  propagatedBuildInputs = [ orocos-kdl ];
+  propagatedBuildInputs = [ builtin-interfaces geometry-msgs kdl-parser orocos-kdl rcl-interfaces rclcpp rclcpp-components sensor-msgs std-msgs tf2-ros urdf ];
   nativeBuildInputs = [ ament-cmake ament-cmake-ros-core ];
-  rosBuildExportDepends = [ builtin-interfaces geometry-msgs kdl-parser rcl-interfaces rclcpp rclcpp-components sensor-msgs std-msgs tf2-ros urdf ];
-  rosExecDepends = [ builtin-interfaces geometry-msgs kdl-parser rcl-interfaces rclcpp rclcpp-components sensor-msgs std-msgs tf2-ros urdf ];
 
   meta = {
     description = "This package take the joint angles of a robot as input, and publishes the 3D poses of the robot links to tf2, using a kinematic tree model of the robot.";

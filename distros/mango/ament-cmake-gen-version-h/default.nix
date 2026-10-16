@@ -14,10 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-core ament-package ];
+  buildInputs = [ ament-package ];
   checkInputs = [ ament-cmake-gtest ];
+  propagatedBuildInputs = [ ament-cmake-core ];
   nativeBuildInputs = [ ament-cmake-core ament-package ];
-  rosBuildExportDepends = [ ament-cmake-core ];
 
   meta = {
     description = "Generate a C header containing the version number of the package";

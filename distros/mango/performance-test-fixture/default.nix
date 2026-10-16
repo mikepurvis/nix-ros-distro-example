@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-core ament-cmake-export-dependencies ament-cmake-export-targets ament-cmake-ros-core ament-cmake-test google-benchmark-vendor osrf-testing-tools-cpp ];
+  buildInputs = [ ament-cmake-core ament-cmake-export-dependencies ament-cmake-export-targets ament-cmake-ros-core ament-cmake-test ];
   checkInputs = [ ament-cmake-google-benchmark ament-lint-auto ament-lint-common ];
-  nativeBuildInputs = [ ament-cmake-core ament-cmake-export-dependencies ament-cmake-export-targets ament-cmake-ros-core ament-cmake-test ];
-  rosBuildExportDepends = [ ament-cmake-google-benchmark google-benchmark-vendor osrf-testing-tools-cpp ];
-  rosExecDepends = [ google-benchmark-vendor osrf-testing-tools-cpp ];
+  propagatedBuildInputs = [ ament-cmake-google-benchmark google-benchmark-vendor osrf-testing-tools-cpp ];
+  nativeBuildInputs = [ ament-cmake-core ament-cmake-export-dependencies ament-cmake-export-targets ament-cmake-google-benchmark ament-cmake-ros-core ament-cmake-test ];
 
   meta = {
     description = "Test fixture and CMake macro for using osrf_testing_tools_cpp with Google Benchmark";

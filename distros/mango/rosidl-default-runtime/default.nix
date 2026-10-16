@@ -16,9 +16,8 @@ buildRosPackage {
   buildType = "ament_cmake";
   buildInputs = [ ament-cmake ];
   checkInputs = [ ament-lint-auto ament-lint-common ];
+  propagatedBuildInputs = [ action-msgs rosidl-core-runtime service-msgs ];
   nativeBuildInputs = [ ament-cmake ];
-  rosBuildExportDepends = [ rosidl-core-runtime ];
-  rosExecDepends = [ action-msgs service-msgs ];
 
   meta = {
     description = "A configuration package defining the runtime for the ROS interfaces.";

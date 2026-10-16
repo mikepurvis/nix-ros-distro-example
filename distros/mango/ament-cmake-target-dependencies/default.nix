@@ -14,9 +14,8 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-core ];
-  nativeBuildInputs = [ ament-cmake-core ];
-  rosBuildExportDepends = [ ament-cmake-core ament-cmake-include-directories ament-cmake-libraries ];
+  propagatedBuildInputs = [ ament-cmake-core ament-cmake-include-directories ament-cmake-libraries ];
+  nativeBuildInputs = [ ament-cmake-core ament-cmake-include-directories ament-cmake-libraries ];
 
   meta = {
     description = "The ability to add definitions, include directories and libraries of a package to a target in the ament buildsystem in CMake.";

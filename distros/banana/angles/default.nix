@@ -14,10 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-python python3Packages.setuptools ];
+  buildInputs = [ ament-cmake-python python3Packages.setuptools ];
   checkInputs = [ ament-cmake-gtest ament-cmake-pytest ];
+  propagatedBuildInputs = [ ament-cmake ];
   nativeBuildInputs = [ ament-cmake ament-cmake-python python3Packages.setuptools ];
-  rosBuildExportDepends = [ ament-cmake ];
 
   meta = {
     description = "This package provides a set of simple math utilities to work

@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-ros builtin-interfaces rcl rcpputils rmw statistics-msgs ];
+  buildInputs = [ ament-cmake-ros ];
   checkInputs = [ ament-cmake-gtest ament-lint-auto ament-lint-common performance-test-fixture rcutils rosidl-default-generators rosidl-default-runtime std-msgs ];
+  propagatedBuildInputs = [ builtin-interfaces rcl rcpputils rmw statistics-msgs ];
   nativeBuildInputs = [ ament-cmake-ros ];
-  rosBuildExportDepends = [ builtin-interfaces rcl rcpputils rmw statistics-msgs ];
-  rosExecDepends = [ builtin-interfaces rcl rcpputils rmw statistics-msgs ];
 
   meta = {
     description = "Lightweight aggregation utilities to collect statistics and measure message metrics.";

@@ -14,9 +14,8 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-core ];
+  propagatedBuildInputs = [ ament-cmake-core ];
   nativeBuildInputs = [ ament-cmake-core ];
-  rosBuildExportDepends = [ ament-cmake-core ];
 
   meta = {
     description = "The functionality to order include directories according to a chain of prefixes in the ament buildsystem in CMake.";

@@ -15,9 +15,8 @@ buildRosPackage {
 
   buildType = "ament_cmake";
   buildInputs = [ ament-cmake-core ];
-  propagatedBuildInputs = [ gtest ];
-  nativeBuildInputs = [ ament-cmake-core gtest ];
-  rosBuildExportDepends = [ ament-cmake-gtest ament-cmake-test ];
+  propagatedBuildInputs = [ ament-cmake-gtest ament-cmake-test gtest ];
+  nativeBuildInputs = [ ament-cmake-core ament-cmake-gtest ament-cmake-test gtest ];
 
   meta = {
     description = "The ability to add Google mock-based tests in the ament buildsystem in CMake.";

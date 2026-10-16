@@ -15,7 +15,7 @@ buildRosPackage {
 
   buildType = "ament_python";
   checkInputs = [ ament-copyright ament-flake8 ament-pep257 ament-xmllint python3Packages.pytest ];
-  rosExecDepends = [ domain-coordinator launch launch-ros launch-testing launch-testing-ros ros2cli ];
+  propagatedBuildInputs = [ domain-coordinator launch launch-ros launch-testing launch-testing-ros ros2cli ];
 
   meta = {
     description = "The test command for ROS 2 launch tests.";

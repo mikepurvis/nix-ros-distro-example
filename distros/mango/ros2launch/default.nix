@@ -15,7 +15,7 @@ buildRosPackage {
 
   buildType = "ament_python";
   checkInputs = [ ament-copyright ament-flake8 ament-pep257 ament-xmllint python3Packages.pytest ];
-  rosExecDepends = [ ament-index-python launch launch-ros launch-xml launch-yaml ros2cli ros2pkg ];
+  propagatedBuildInputs = [ ament-index-python launch launch-ros launch-xml launch-yaml ros2cli ros2pkg ];
 
   meta = {
     description = "The launch command for ROS 2 command line tools.";

@@ -14,10 +14,8 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-package ];
-  propagatedBuildInputs = [ cmake python3Packages.catkin-pkg ];
+  propagatedBuildInputs = [ ament-package cmake python3Packages.catkin-pkg ];
   nativeBuildInputs = [ ament-package cmake python3Packages.catkin-pkg ];
-  rosBuildExportDepends = [ ament-package ];
 
   meta = {
     description = "The core of the ament buildsystem in CMake.

@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake pluginlib rmw rosidl-buffer-backend rosidl-runtime-cpp ];
+  buildInputs = [ ament-cmake ];
   checkInputs = [ ament-cmake-gtest ament-lint-auto ament-lint-common rosidl-buffer ];
+  propagatedBuildInputs = [ pluginlib rmw rosidl-buffer-backend rosidl-runtime-cpp ];
   nativeBuildInputs = [ ament-cmake ];
-  rosBuildExportDepends = [ pluginlib rmw rosidl-buffer-backend rosidl-runtime-cpp ];
-  rosExecDepends = [ pluginlib rmw rosidl-buffer-backend rosidl-runtime-cpp ];
 
   meta = {
     description = "Backend discovery and plugin loading for ROS2 buffer types";

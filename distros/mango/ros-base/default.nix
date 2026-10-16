@@ -15,8 +15,8 @@ buildRosPackage {
 
   buildType = "ament_cmake";
   buildInputs = [ ament-cmake ];
+  propagatedBuildInputs = [ geometry2 kdl-parser robot-state-publisher ros-core rosbag2 urdf ];
   nativeBuildInputs = [ ament-cmake ];
-  rosExecDepends = [ geometry2 kdl-parser robot-state-publisher ros-core rosbag2 urdf ];
 
   meta = {
     description = "A package which extends 'ros_core' and includes other basic functionalities like tf2 and urdf.";

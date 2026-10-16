@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-ros rcl-logging-interface rcpputils rcutils ];
+  buildInputs = [ ament-cmake-ros ];
   checkInputs = [ ament-lint-auto ament-lint-common rcl-logging-noop ];
+  propagatedBuildInputs = [ rcl-logging-interface rcl-logging-spdlog rcpputils rcutils ];
   nativeBuildInputs = [ ament-cmake-ros ];
-  rosBuildExportDepends = [ rcl-logging-interface rcpputils rcutils ];
-  rosExecDepends = [ rcl-logging-interface rcl-logging-spdlog rcpputils rcutils ];
 
   meta = {
     description = "Provides the ability to load logging implementations at runtime.

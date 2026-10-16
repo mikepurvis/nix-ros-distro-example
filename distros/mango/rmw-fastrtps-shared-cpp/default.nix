@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-ros-core fastcdr fastdds rcpputils rcutils rmw rmw-dds-common rmw-security-common rosidl-buffer-backend-registry rosidl-dynamic-typesupport rosidl-runtime-c rosidl-typesupport-introspection-c rosidl-typesupport-introspection-cpp tracetools ];
+  buildInputs = [ ament-cmake-ros-core rosidl-buffer-backend-registry rosidl-runtime-c ];
   checkInputs = [ ament-cmake-gmock ament-cmake-gtest ament-lint-auto ament-lint-common osrf-testing-tools-cpp ];
+  propagatedBuildInputs = [ fastcdr fastdds rcpputils rcutils rmw rmw-dds-common rmw-security-common rosidl-dynamic-typesupport rosidl-typesupport-introspection-c rosidl-typesupport-introspection-cpp tracetools ];
   nativeBuildInputs = [ ament-cmake-ros-core ];
-  rosBuildExportDepends = [ fastcdr fastdds rcpputils rcutils rmw rmw-dds-common rmw-security-common rosidl-dynamic-typesupport rosidl-typesupport-introspection-c rosidl-typesupport-introspection-cpp tracetools ];
-  rosExecDepends = [ rmw-dds-common ];
 
   meta = {
     description = "Code shared on static and dynamic type support of rmw_fastrtps_cpp.";

@@ -14,10 +14,8 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-core ament-cmake-test ];
-  propagatedBuildInputs = [ python3Packages.pytest ];
+  propagatedBuildInputs = [ ament-cmake-core ament-cmake-test python3Packages.pytest ];
   nativeBuildInputs = [ ament-cmake-core ament-cmake-test python3Packages.pytest ];
-  rosBuildExportDepends = [ ament-cmake-core ament-cmake-test ];
 
   meta = {
     description = "The ability to run Python tests using pytest in the ament buildsystem in CMake.";

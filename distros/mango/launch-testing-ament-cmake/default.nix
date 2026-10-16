@@ -5,19 +5,19 @@
 { lib, buildRosPackage, fetchurl, ament-cmake, ament-cmake-copyright, ament-cmake-test, launch-testing }:
 buildRosPackage {
   pname = "ros-mango-launch-testing-ament-cmake";
-  version = "3.10.1-r1";
+  version = "3.10.2-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros2-gbp/launch-release/archive/release/rolling/launch_testing_ament_cmake/3.10.1-1.tar.gz";
-    name = "3.10.1-1.tar.gz";
-    sha256 = "d01bc044ab149f9ec4e9ad0e4b513db32936d3e1f46c463f5015cfbc6657a47b";
+    url = "https://github.com/ros2-gbp/launch-release/archive/release/rolling/launch_testing_ament_cmake/3.10.2-1.tar.gz";
+    name = "3.10.2-1.tar.gz";
+    sha256 = "8c7842d6fff5386ec9bbcfc0605f37639ef9b6dddbfec6948492249857278f65";
   };
 
   buildType = "ament_cmake";
   buildInputs = [ ament-cmake ];
   checkInputs = [ ament-cmake-copyright launch-testing ];
-  nativeBuildInputs = [ ament-cmake ];
-  rosBuildExportDepends = [ ament-cmake-test launch-testing ];
+  propagatedBuildInputs = [ ament-cmake-test launch-testing ];
+  nativeBuildInputs = [ ament-cmake ament-cmake-test launch-testing ];
 
   meta = {
     description = "A package providing cmake functions for running launch tests from the build.";

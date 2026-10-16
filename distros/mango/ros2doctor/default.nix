@@ -15,8 +15,7 @@ buildRosPackage {
 
   buildType = "ament_python";
   checkInputs = [ ament-copyright ament-flake8 ament-pep257 ament-xmllint launch launch-ros launch-testing launch-testing-ros python3Packages.pytest python3Packages.pytest-timeout std-msgs std-srvs test-msgs ];
-  propagatedBuildInputs = [ python3Packages.catkin-pkg python3Packages.psutil python3Packages.rosdistro ];
-  rosExecDepends = [ ament-index-python rclpy ros-environment ros2action ros2cli std-msgs ];
+  propagatedBuildInputs = [ ament-index-python python3Packages.catkin-pkg python3Packages.psutil python3Packages.rosdistro rclpy ros-environment ros2action ros2cli std-msgs ];
 
   meta = {
     description = "A command line tool to check potential issues in a ROS 2 system";

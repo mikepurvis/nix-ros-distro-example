@@ -15,8 +15,7 @@ buildRosPackage {
 
   buildType = "ament_python";
   checkInputs = [ ament-copyright ament-flake8 ament-pep257 python3Packages.pytest ];
-  propagatedBuildInputs = [ libxml2 ];
-  rosExecDepends = [ ament-lint ];
+  propagatedBuildInputs = [ ament-lint libxml2 ];
 
   meta = {
     description = "The ability to check XML files like the package manifest using xmllint

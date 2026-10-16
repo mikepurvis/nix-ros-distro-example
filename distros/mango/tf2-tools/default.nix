@@ -15,8 +15,7 @@ buildRosPackage {
 
   buildType = "ament_python";
   checkInputs = [ ament-copyright ament-flake8 ament-pep257 ament-xmllint python3Packages.pytest ];
-  propagatedBuildInputs = [ graphviz python3Packages.pyyaml ];
-  rosExecDepends = [ rclpy tf2-msgs tf2-py tf2-ros-py ];
+  propagatedBuildInputs = [ graphviz python3Packages.pyyaml rclpy tf2-msgs tf2-py tf2-ros-py ];
 
   meta = {
     description = "tf2_tools";

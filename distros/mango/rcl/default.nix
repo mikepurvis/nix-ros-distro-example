@@ -14,12 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-gen-version-h ament-cmake-ros libyaml-vendor rcl-interfaces rcl-logging-implementation rcl-logging-interface rcl-logging-spdlog rcl-yaml-param-parser rcutils rmw-implementation rosidl-runtime-c service-msgs tracetools type-description-interfaces ];
+  buildInputs = [ ament-cmake-gen-version-h ament-cmake-ros ];
   checkInputs = [ ament-cmake-ros-core ament-lint-auto ament-lint-common launch launch-testing launch-testing-ament-cmake mimick-vendor osrf-testing-tools-cpp rmw rmw-implementation-cmake rosidl-runtime-cpp test-msgs ];
-  propagatedBuildInputs = [ libyaml ];
+  propagatedBuildInputs = [ libyaml libyaml-vendor rcl-interfaces rcl-logging-implementation rcl-logging-interface rcl-logging-spdlog rcl-yaml-param-parser rcutils rmw rmw-implementation rosidl-runtime-c service-msgs tracetools type-description-interfaces ];
   nativeBuildInputs = [ ament-cmake-gen-version-h ament-cmake-ros ];
-  rosBuildExportDepends = [ libyaml-vendor rcl-interfaces rcl-logging-implementation rcl-logging-interface rcl-logging-spdlog rcl-yaml-param-parser rcutils rmw rmw-implementation rosidl-runtime-c service-msgs tracetools type-description-interfaces ];
-  rosExecDepends = [ libyaml-vendor rcl-interfaces rcl-logging-implementation rcl-logging-interface rcl-logging-spdlog rcl-yaml-param-parser rcutils rmw-implementation rosidl-runtime-c service-msgs tracetools type-description-interfaces ];
 
   meta = {
     description = "The ROS client library common implementation.

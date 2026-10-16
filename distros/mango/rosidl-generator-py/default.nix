@@ -14,12 +14,9 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake rosidl-runtime-c ];
   checkInputs = [ ament-cmake-pytest ament-index-python ament-lint-auto ament-lint-common python3Packages.numpy python3Packages.pytest rmw rosidl-buffer-py rosidl-cmake rosidl-generator-c rosidl-generator-cpp rosidl-parser rosidl-typesupport-c rosidl-typesupport-fastrtps-c rosidl-typesupport-introspection-c rpyutils test-interface-files ];
-  propagatedBuildInputs = [ python3Packages.numpy python3Packages.typing-extensions ];
-  nativeBuildInputs = [ ament-cmake ];
-  rosBuildExportDepends = [ ament-cmake ament-index-python rmw rosidl-generator-c rosidl-pycommon rosidl-runtime-c rosidl-typesupport-c rosidl-typesupport-interface ];
-  rosExecDepends = [ ament-cmake-cppcheck ament-cmake-cpplint ament-cmake-flake8 ament-cmake-mypy ament-cmake-pep257 ament-cmake-uncrustify ament-index-python rosidl-buffer-py rosidl-cli rosidl-generator-c rosidl-parser rosidl-runtime-c rpyutils ];
+  propagatedBuildInputs = [ ament-cmake ament-cmake-cppcheck ament-cmake-cpplint ament-cmake-flake8 ament-cmake-mypy ament-cmake-pep257 ament-cmake-uncrustify ament-index-python python3Packages.numpy python3Packages.typing-extensions rmw rosidl-buffer-py rosidl-cli rosidl-generator-c rosidl-parser rosidl-pycommon rosidl-runtime-c rosidl-typesupport-c rosidl-typesupport-interface rpyutils ];
+  nativeBuildInputs = [ ament-cmake ament-index-python rosidl-generator-c rosidl-pycommon rosidl-typesupport-c rosidl-typesupport-interface ];
 
   meta = {
     description = "Generate the ROS interfaces in Python.";

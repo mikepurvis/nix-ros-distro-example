@@ -14,10 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake-ros urdfdom-headers ];
+  buildInputs = [ ament-cmake-ros ];
   checkInputs = [ ament-lint-auto ament-lint-common ];
+  propagatedBuildInputs = [ urdfdom-headers ];
   nativeBuildInputs = [ ament-cmake-ros ];
-  rosBuildExportDepends = [ urdfdom-headers ];
 
   meta = {
     description = "This package contains a C++ base class for URDF parsers.";

@@ -14,10 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-ros-core ament-cmake-version rcutils rosidl-dynamic-typesupport rosidl-runtime-c ];
+  buildInputs = [ ament-cmake ament-cmake-ros-core ament-cmake-version ];
   checkInputs = [ ament-cmake-gmock ament-lint-auto ament-lint-common osrf-testing-tools-cpp ];
+  propagatedBuildInputs = [ rcutils rosidl-dynamic-typesupport rosidl-runtime-c ];
   nativeBuildInputs = [ ament-cmake ament-cmake-ros-core ament-cmake-version ];
-  rosBuildExportDepends = [ rcutils rosidl-dynamic-typesupport rosidl-runtime-c ];
 
   meta = {
     description = "Contains the ROS middleware API.";

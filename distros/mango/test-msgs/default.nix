@@ -14,12 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake builtin-interfaces rosidl-default-generators test-interface-files ];
+  buildInputs = [ ament-cmake rosidl-default-generators test-interface-files ];
   checkInputs = [ ament-cmake-gtest ament-cmake-mypy ament-lint-auto ament-lint-common ];
-  propagatedBuildInputs = [ python3Packages.typing-extensions ];
+  propagatedBuildInputs = [ builtin-interfaces python3Packages.typing-extensions rosidl-default-runtime ];
   nativeBuildInputs = [ ament-cmake rosidl-default-generators ];
-  rosBuildExportDepends = [ builtin-interfaces ];
-  rosExecDepends = [ builtin-interfaces rosidl-default-runtime ];
 
   meta = {
     description = "A package containing message definitions and fixtures used exclusively for testing purposes.";

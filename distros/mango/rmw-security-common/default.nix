@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-ros-core rcutils rmw ];
+  buildInputs = [ ament-cmake ament-cmake-ros-core ];
   checkInputs = [ ament-cmake-gmock ament-lint-auto ament-lint-common ];
+  propagatedBuildInputs = [ rcutils rmw ];
   nativeBuildInputs = [ ament-cmake ament-cmake-ros-core ];
-  rosBuildExportDepends = [ rcutils rmw ];
-  rosExecDepends = [ rcutils rmw ];
 
   meta = {
     description = "Define a common rmw secutiry utils";

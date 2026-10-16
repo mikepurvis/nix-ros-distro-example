@@ -16,10 +16,8 @@ buildRosPackage {
   buildType = "ament_cmake";
   buildInputs = [ ament-cmake-python ament-cmake-ros-core ];
   checkInputs = [ ament-cmake-pytest ament-lint-auto ament-lint-common ];
-  propagatedBuildInputs = [ python3 ];
-  nativeBuildInputs = [ ament-cmake-python ament-cmake-ros-core python3 ];
-  rosBuildExportDepends = [ ament-cmake-core ];
-  rosExecDepends = [ ament-index-python rosidl-cli rosidl-parser ];
+  propagatedBuildInputs = [ ament-cmake-core ament-index-python python3 rosidl-cli rosidl-parser ];
+  nativeBuildInputs = [ ament-cmake-core ament-cmake-python ament-cmake-ros-core python3 ];
 
   meta = {
     description = "Generate hashes and descriptions of ROS 2 interface types, per REP-2011.";

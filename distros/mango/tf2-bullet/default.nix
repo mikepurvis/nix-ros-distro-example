@@ -14,12 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake geometry-msgs tf2 tf2-ros ];
+  buildInputs = [ ament-cmake ];
   checkInputs = [ ament-cmake-gtest ament-cmake-ros-core ament-lint-auto ament-lint-common ];
-  propagatedBuildInputs = [ bullet ];
+  propagatedBuildInputs = [ bullet geometry-msgs tf2 tf2-ros ];
   nativeBuildInputs = [ ament-cmake ];
-  rosBuildExportDepends = [ geometry-msgs tf2 tf2-ros ];
-  rosExecDepends = [ geometry-msgs tf2 tf2-ros ];
 
   meta = {
     description = "tf2_bullet";

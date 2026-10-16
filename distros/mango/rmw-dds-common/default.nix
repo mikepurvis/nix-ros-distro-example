@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-ros-core rcpputils rcutils rmw rmw-security-common rosidl-default-generators rosidl-runtime-c rosidl-runtime-cpp ];
+  buildInputs = [ ament-cmake ament-cmake-ros-core rosidl-default-generators ];
   checkInputs = [ ament-cmake-gmock ament-lint-auto ament-lint-common osrf-testing-tools-cpp performance-test-fixture ];
+  propagatedBuildInputs = [ rcpputils rcutils rmw rmw-security-common rosidl-default-runtime rosidl-runtime-c rosidl-runtime-cpp ];
   nativeBuildInputs = [ ament-cmake ament-cmake-ros-core rosidl-default-generators ];
-  rosBuildExportDepends = [ rcpputils rcutils rmw rmw-security-common rosidl-runtime-c rosidl-runtime-cpp ];
-  rosExecDepends = [ rcpputils rcutils rmw rmw-security-common rosidl-default-runtime rosidl-runtime-c rosidl-runtime-cpp ];
 
   meta = {
     description = "Define a common interface between DDS implementations of ROS middleware.";

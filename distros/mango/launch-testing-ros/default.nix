@@ -15,7 +15,7 @@ buildRosPackage {
 
   buildType = "ament_python";
   checkInputs = [ ament-copyright ament-flake8 ament-pep257 ament-xmllint python3Packages.pytest std-msgs ];
-  rosExecDepends = [ ament-index-python launch-ros launch-testing rclpy rmw-test-fixture-implementation ];
+  propagatedBuildInputs = [ ament-index-python launch-ros launch-testing rclpy rmw-test-fixture-implementation ];
 
   meta = {
     description = "A package providing utilities for writing ROS2 enabled launch tests.";

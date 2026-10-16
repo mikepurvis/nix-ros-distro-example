@@ -14,11 +14,10 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake rmw ];
+  buildInputs = [ ament-cmake ];
   checkInputs = [ ament-lint-auto ament-lint-common ];
+  propagatedBuildInputs = [ rmw ];
   nativeBuildInputs = [ ament-cmake ];
-  rosBuildExportDepends = [ rmw ];
-  rosExecDepends = [ rmw ];
 
   meta = {
     description = "Buffer backend interface for ROS2 buffer types";

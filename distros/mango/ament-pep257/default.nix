@@ -15,8 +15,7 @@ buildRosPackage {
 
   buildType = "ament_python";
   checkInputs = [ ament-flake8 python3Packages.pytest ];
-  propagatedBuildInputs = [ python3Packages.pydocstyle ];
-  rosExecDepends = [ ament-lint ];
+  propagatedBuildInputs = [ ament-lint python3Packages.pydocstyle ];
 
   meta = {
     description = "The ability to check code against the docstring style conventions in

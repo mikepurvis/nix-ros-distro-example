@@ -14,10 +14,9 @@ buildRosPackage {
   };
 
   buildType = "ament_cmake";
-  buildInputs = [ ament-cmake ament-cmake-ros-core git lz4-cmake-module zstd-cmake-module ];
+  buildInputs = [ ament-cmake ament-cmake-ros-core git ];
+  propagatedBuildInputs = [ lz4-cmake-module zstd-cmake-module ];
   nativeBuildInputs = [ ament-cmake ament-cmake-ros-core git ];
-  rosBuildExportDepends = [ lz4-cmake-module zstd-cmake-module ];
-  rosExecDepends = [ zstd-cmake-module ];
 
   meta = {
     description = "mcap vendor package";
