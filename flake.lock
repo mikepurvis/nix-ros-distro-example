@@ -25,11 +25,11 @@
         "rosdistro": "rosdistro"
       },
       "locked": {
-        "lastModified": 1792129746,
-        "narHash": "sha256-Wg24BTKJ87lCy3vABM645gNujRytXPrGTKQ2U+Wt6Eg=",
+        "lastModified": 1792170215,
+        "narHash": "sha256-w5kBcuPKkc42Jik3+HQ60GKuCuwsWKytViPnm9LcGRk=",
         "owner": "mikepurvis",
         "repo": "nix-ros-overlay",
-        "rev": "56a4b511871d9b4bbeca458deea4b2d2ec8c0f4d",
+        "rev": "95126c9c120b0701ff8f165d8dba636476ff0df3",
         "type": "github"
       },
       "original": {
