@@ -27,7 +27,7 @@ branch [`mkrosdistro-AN2ATG0`][branch] of the overlay; see
 
 ```sh
 nix build .#env                      # the three packages in a ros-env
-nix build .#legacyPackages.x86_64-linux.banana.angles
+nix build .#banana.angles
 ```
 
 `rosPackages.banana.<pkg>.drvPath` equals `rosPackages.jazzy.<pkg>.drvPath`
